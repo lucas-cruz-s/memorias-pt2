@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKKKKKKK</title>
+
+    <style>
+        body {
+            background-color: red;
+        }
+
+        .painel {
+            margin: auto;
+            background-color: pink;
+            width: 380px;
+            height: 450px;
+            border-radius: 20px;
+            text-align: center;
+            padding-top: 40px;
+            padding-bottom: 8px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-bottom: 80px;
+        }
+
+        .painel h2 {
+            margin-top: 30px;
+        }
+
+        #sim {
+            margin-top: 10px;
+            height: 45px;
+            width: 60px;
+            background-color: red;
+            border: 3px solid black;
+            border-radius: 10px;
+            color: white;
+            margin-left: -95px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        #sim:hover {
+            background-color: black;
+            border: 3px solid #ffffff;
+        }
+
+        #nao {
+            position: absolute;
+            margin-top: 10px;
+            height: 45px;
+            width: 60px;
+            background-color: red;
+            border: 3px solid black;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            margin-left: 30px;
+        }
+
+        .painel img {
+            height: 200px;
+            padding-top: 25px;
+        }
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .background::after {
+            content: '';
+            width: inherit;
+            height: inherit;
+            position: fixed;
+            inset: 0;
+        }
+
+        .countainer {
+            margin-top: 10px;
+            position: absolute;
+            margin: auto;
+            background-color: red;
+            width: 200px;
+            height: 100px;
+            margin-left: 845px;
+            border-radius: 10px;
+            border: 2px solid white;
+        }
+
+        .countainer.remover {
+            display: none;
+        }
+
+        .countainer.ativar {
+            display: block;
+        }
+
+        .exibir {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            margin-left: 50px;
+            margin-top: 30px;
+            background-color: hotpink;
+            color: white;
+            height: 45px;
+            width: 110px;
+            border-radius: 3px;
+            border: 3px solid black;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.3;
+            transform: skew(-20deg);
+        }
+
+        .exibir.remover {
+            display: none;
+        }
+
+        .exibir.ativar {
+            display: block;
+        }
+
+        .exibir:hover {
+            background-color: purple;
+            color: black;
+        }
+
+        #conteudo {
+            margin: auto;
+            width: 80%;
+            height: 900px;
+            border: 2px solid rgba(255, 255, 255, .5);
+            margin-top: 5px;
+            padding: 10px;
+            background-color: transparent;
+            display: none;
+            overflow: auto;
+            backdrop-filter: blur(15px);
+        }
+
+        .videos {
+            margin-left: 10px;
+            text-align: center;
+            margin-bottom: 100px;
+            border: 2px solid pink;
+        }
+
+        .videos:hover {
+            background-color: hotpink;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        .videos h3 {
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+
+        .conteudos::-webkit-scrollbar {
+            display: none;
+        }
+
+        .conteudo2::-webkit-scrollbar {
+            display: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h3 {
+            color: yellow;
+            text-shadow: 4px 4px 4px #000;
+            font-weight: bolder;
+            font-family: sans-serif;
+            font-size: 17px;
+        }
+
+        .eren {
+            width: 250px;
+            margin: 20px;
+            margin-left: 650px;
+            margin-bottom: 60px;
+        }
+
+        .btn-fechar {
+            position: absolute;
+            margin-left: 1450px;
+            margin-top: 42px;
+            border-radius: 50%;
+            border-style: none;
+            border: 1px solid black;
+            height: 35px;
+            width: 35px;
+            text-align: center;
+            font-weight: bolder;
+            font-size: 22px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-fechar:hover {
+            background-color: rgba(107, 11, 233, 0.781);
+            border: 2px solid black;
+            color: red;
+
+        }
+
+        .conteudo-interno {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .conteudo2-interno {
+            padding-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .countainer2 {
+            margin-top: 270px;
+            position: absolute;
+            width: 150px;
+            height: 70px;
+            margin-left: 1698px;
+            border-radius: 10px;
+            border: 2px solid white;
+        }
+
+        .btn2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            margin-left: 20px;
+            margin-top: 12px;
+            background-color: rgb(160, 27, 93);
+            color: white;
+            height: 45px;
+            width: 110px;
+            border-radius: 3px;
+            border: 3px solid black;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.3;
+            transform: skew(-20deg);
+        }
+
+        .btn2:hover {
+            background-color: hotpink;
+            color: black;
+        }
+
+        .conteudo2 {
+            margin: auto;
+            width: 80%;
+            height: 900px;
+            border: 2px solid rgba(255, 255, 255, .5);
+            margin-top: 5px;
+            padding: 10px;
+            background-color: transparent;
+            overflow: auto;
+            backdrop-filter: blur(15px);
+            display: none;
+        }
+
+        .conteudo2 img {
+            height: 310px;
+            width: 250px;
+            margin: 20px;
+            margin-left: 650px;
+            margin-bottom: 60px;
+        }
+
+        .btn-fechar2 {
+            position: absolute;
+            margin-left: 520px;
+            margin-top: 22px;
+            border-radius: 50%;
+            border-style: none;
+            border: 1px solid black;
+            height: 35px;
+            width: 35px;
+            text-align: center;
+            font-weight: bolder;
+            font-size: 22px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-fechar2:hover {
+            background-color: rgba(107, 11, 233, 0.781);
+            border: 2px solid black;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <video loop autoplay muted>
+            <source src="./src/fundo-novo.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <main>
+        <div class="painel">
+            <h1>Sitezin para a Frags</h1>
+
+            <img src="./src/atack gif.gif" alt="">
+
+
+            <h2>A Duda Ama Jogar com o Elvenz?</h2>
+
+            <button id="sim" onclick="audio.play();"> Sim! </button>
+            <button onmouseover="fuja()" id="nao"> Não! </button>
+        </div>
+    </main>
+
+    <div class="countainer" id="memorias">
+
+        <a href="#erenn"><button onclick="mostrar('conteudo')" class="exibir">MEMÓRIAS</button></a>
+    </div>
+
+    <div id="conteudo" class="conteudos">
+
+        <button onclick="fecharr('conteudo')" class="btn-fechar">X</button>
+
+        <img class="eren" id="erenn" src="./src/gife4.gif" alt="">
+
+
+        <div class="conteudo-interno">
+
+            <div class="videos" id="videoss">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/MOTqDXYjk-0?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>NICK NOVO</h3>
+            </div>
+
+
+
+            <div class="videos" id="videoss">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/c_fmcRNdPLQ?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>DIAMANTE DOISSSSS</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/QYOB6Fvi2rM?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>NÃOOOO, POR FAVOR</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/vmywXYaNqDk?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>FAQUINHA BOAAA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/3tCXC1j2thk?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>TOKENZINHOOO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/dlePej83V0w?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>OHH, O BRAYAN</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/0S1NyInmnHc?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>DUDA SPRAYZINHOO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/jRbMBQXYoTI?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>ELVENZ MAIN JETT</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/sxRcQRtzCwU?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>DA O DASH PORRAAA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/lHmYzjNkDhg?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>FERRO COM MAIS MIRA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/S3INPSqIFoc?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>MINECRAFT</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/EOpmUEU7BQ0?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>DRONE DE SOVA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/XzOUhKQrxU4?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>ROBLOX</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/Ep0JIBVeLVo?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>MIRA ABERTA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/dG5FqvlIE54?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>ULTA DUDA SMOKES</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/HYuiEHJHnyQ?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>VOU BANGAR</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/OpQjhtTQsWw?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>MAROTADA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/fwLNwxM2zDc?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>NAAAAUM</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/Cbt-KfzMrLM?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>PINEI TUDO CARAAA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/IruRxverEig?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>GANHADORA DE CLUTCHES</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/N4kraLVl8pQ?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>AIIIIIII, QUE BOSTAA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/pld70r3XD7A?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>NARRAÇÃO ELVENZZ</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/WJtJ8nobBSw?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>BREACH FORTEE</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/Xo45KVryuVM?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>COSTAAAS</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/m9jqIvCGs7o?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>CLASSIC BOA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/c5X-lZ67RhU?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>NICEE ULT</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/LmwKBoMXWgY?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>AFK É MAIS DIFICIL</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/IcBGEfpkATA?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>ELVENZ PINANDO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/Eu78iUbCuJI?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>CYPHER MIRUDO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/KMJhfBfTw0s?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>KJ LURKERRR</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/imCcKyY2E3w?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>IMPOSSIVEL PERDERRR</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/73H9n6Cq3mw?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>TAPA DROP INFINITO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/DB1rS-I5FEY?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>COSTINHASS</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/ANOhWAqQPjI?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>NÃO CONFIA NA CALL</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/oU6gAv0dlt4?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>ELVENZ MIRA BAMBA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/PISeF6UB0hc?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>TEORIA COMPROVADA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/433Brq3rHDw?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>X1 BOMMM!</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/aEChuH853tM?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>SOVA ULTANDO NO ABERTO!!!</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/R1eLj941Sf0?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>ROBLOX X1ZINHO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/kEJZTtA5IRU?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>EU NÃO CONSIGO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/XXTwXf_52Fo?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>SUSTOOO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/GZeq89WQeKE?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>PROTEGEE</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/W0yPca40a5I?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>CONFIAA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/WtTXxkNGlJI?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>REYNA BAITER</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/KhLjXzBDy54?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>DIAMANTE - PART2</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="countainer2">
+        <a href="#atracao"><button onclick="toggleDiv()" class="btn2">Outros</button></a>
+    </div>
+
+    <div class="conteudo2" id="conteudo2">
+        <img src="./src/omen.gif" id="atracao" alt="">
+        <button onclick="closeDiv()" class="btn-fechar2">X</button>
+
+        <div class="conteudo2-interno">
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/gLV-A7Y-WvA?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>MDS, NÃO PEGOU TIROO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/3JzJO27dmq0?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>PQPPP</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/Xcex2Yl-uRA?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>VOU ESPERAR ABRIRRR</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/2YE-xT4lbJg?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>UMA UNIDADE</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/Id3tpXtPTe0?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>SE EU PINAR, SOU GAY</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/7jP5OVHxqpk?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>GUYSSS</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/FLTh4RJMuTI?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>EU AGACHEII</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/f44GpoLN-E0?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>MDSS ELVEN</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/4rCynu3o1qc?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>GHOST NICE</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/7NqGKqKLqnw?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>SHERIFF NICEE</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/iCJbjsbJh3E?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>REFLEXO BOM</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/mC8V91aiTXA?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>MIRA CALMA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/0ZeNw3COVck?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>SPRAYZINHO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/F0LbnYXCH5I?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>SENSI LENTAA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/JcCjgfKPwEw?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>ABERTURA BOA</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/5zZRdtzQADg?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>1499999</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/BlOP-gGkkSQ?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>CAIUUUUUUU</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/4ZEz8fDVmcc?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>TROLLZINHOO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/cW5IKveAcWc?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>BRAYAN E RAI</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/eT9ph_FrhgU?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>GENTEEEEE!!!</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/W-pLw885-dU?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>BATATINHA LURKER</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/bdfczB6T6J8?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>ROSNANDO</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/acT7b1o5NJs?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>TEM NINGUEM AI</h3>
+            </div>
+
+            <div class="videos">
+                <iframe width="300" height="185" src="https://www.youtube.com/embed/HdjpeOKkLIM?si=mriQSEaQ6X5QAAEt"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>DISCUSSÃO</h3>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const audio = new Audio();
+        audio.src = "./src/audioo.mp3";
+
+        const botaoMostrarProjetos = document.querySelector('.exibir')
+        const esconderDiv = document.querySelector('#conteudo')
+        const divEsconder = document.querySelector('.countainer')
+
+        function fuja() {
+            var botaoNao = document.getElementById("nao")
+
+            var larguraJanela = window.innerWidth;
+            var alturaJanela = window.innerHeight;
+
+            var maxX = larguraJanela - botaoNao.offsetWidth;
+            var maxY = alturaJanela - botaoNao.offsetHeight;
+
+            var aleatorioX = Math.floor(Math.random() * maxX);
+            var aleatorioY = Math.floor(Math.random() * maxY);
+
+            botaoNao.style.left = aleatorioX + "px";
+            botaoNao.style.top = aleatorioY + "px";
+        }
+
+        function mostrar(el) {
+            document.getElementById(el).style.display = 'block'
+            botaoMostrarProjetos.classList.add('remover')
+            divEsconder.classList.add('remover')
+        }
+
+
+        function fecharr(ele1) {
+            document.getElementById(ele1).style.display = 'none';
+
+            divEsconder.classList.add('ativar');
+            botaoMostrarProjetos.classList.add('ativar');
+        }
+
+        function toggleDiv() {
+            let div2 = document.querySelector(".conteudo2");
+            let divBotao = document.querySelector(".countainer2");
+
+            div2.style.display = 'block'
+            divBotao.style.display = 'none'
+        }
+
+        function closeDiv() {
+            let fechar = document.querySelector(".conteudo2");
+            let divBotao = document.querySelector(".countainer2");
+
+            fechar.style.display = 'none'
+            divBotao.style.display = 'block'
+        }
+
+    </script>
+</body>
+
+</html>
